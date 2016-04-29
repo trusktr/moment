@@ -3,7 +3,7 @@
 
 var packageName = 'momentjs:moment';  // https://atmospherejs.com/momentjs/moment
 
-var packageJson = JSON.parse(Npm.require("fs").readFileSync('packages/momentjs:moment/package.json'));
+var packageJson = JSON.parse(Npm.require("fs").readFileSync('package.json'));
 
 Package.describe({
   name: packageName,
@@ -14,12 +14,7 @@ Package.describe({
 
 Package.onUse(function (api) {
   api.versionsFrom(['METEOR@0.9.0', 'METEOR@1.0', 'METEOR@1.2', 'METEOR@1.3']);
-  //api.mainModule('meteor/export.js');
-  api.export('moment');
-  api.addFiles([
-    //'moment.js',
-    'meteor/export.js'
-  ]);
+  api.mainModule('moment.js');
 });
 
 Package.onTest(function (api) {
